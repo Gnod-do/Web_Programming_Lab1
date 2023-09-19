@@ -1,0 +1,70 @@
+body {
+    background-image: url(images/wallpaper2.jpeg);
+    background-size: 100%;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+[title = "Gnod here"] {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    font-size: 250%;
+    text-decoration: underline;
+    color: #130229;
+}
+
+.main-table {
+    text-align: center;
+}
+
+TH.variable::after {
+    content: "🍁";
+}
+
+div input {
+    color: #050405;
+    border-width: thick;
+    border-style: groove;
+    border-color: #050405;
+}
+
+div p {
+    font-size: 150%;
+}
+
+.not-main-table {
+    font-size: 200%;
+    border-style: groove;
+    border-color: #c4b5c4;
+    text-align: center;
+    color: rgb(78, 200, 200);
+    font-style: normal;
+    width: 100%;
+}
+
+#button {
+    color: rgb(14, 12, 12);
+    text-align: center;
+    padding: 1% 2%;
+    margin: 2%;
+    background: rgb(242, 233, 233);
+    border: groove #e7d7d6;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+#cleaningbutton {
+    color: black;
+    text-align: center;
+    padding: 1% 2%;
+    margin: 2%;
+    background: rgb(242, 233, 233);
+    border: groove #e7d7d6;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+#select {
+    font-size: 100%;
+}
+
+
