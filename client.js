@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function submit() {
-    if (checkY() && checkR()) {
+    if (validateInput()) {
         let xSelect = document.getElementById("select");
         let x = xSelect.value;
         let form = new FormData();
@@ -39,32 +39,49 @@ function clean() {
     cleaningrequest.send(cleaningform);
 }
 
-function checkY() {
+function validateInput() {
     let y = document.getElementById("y");
-    if (y.value.trim() === "") {
-        alert("You need to fill this field!");
-        return false;
-    } else if(!isFinite(y.value.replace(',','.'))) {
-        alert("Y must be number!");
-    } else if (y.value.replace(',','.') >= 5 || y.value.replace(',','.') <= -5) {
-        alert("Y must be in (-5;5)");
-        return false;
-    } else {
-        return true;
+    let r = document.getElementById("r");
+    let errorContainer = document.getElementById("error-container");
+
+    // Xóa tất cả thông báo lỗi trước đó
+    while (errorContainer.firstChild) {
+        errorContainer.removeChild(errorContainer.firstChild);
     }
+
+    let hasError = false;
+
+    if (y.value.trim() === "") {
+        displayError("You need to fill the Y field!");
+        hasError = true;
+    } else if (!isFinite(y.value.replace(',', '.'))) {
+        displayError("Y must be a number!");
+        hasError = true;
+    } else if (y.value.replace(',', '.') >= 5 || y.value.replace(',', '.') <= -5) {
+        displayError("Y must be in the range (-5; 5)");
+        hasError = true;
+    }
+
+    if (r.value.trim() === "") {
+        displayError("You need to fill the R field!");
+        hasError = true;
+    } else if (!isFinite(r.value.replace(',', '.'))) {
+        displayError("R must be a number!");
+        hasError = true;
+    } else if (r.value.replace(',', '.') >= 4 || r.value.replace(',', '.') <= 1) {
+        displayError("R must be in the range (1; 4)");
+        hasError = true;
+    }
+
+    errorContainer.style.display = hasError ? "block" : "none";
+
+    return !hasError;
 }
 
-function checkR() {
-    let r = document.getElementById("r");
-    if (r.value.trim() === "") {
-        alert("You need to fill this field!");
-        return false;
-    } else if(!isFinite(r.value.replace(',','.'))) {
-        alert("R must be number!");
-    } else if (r.value.replace(',','.') >= 4 || r.value.replace(',','.') <= 1) {
-        alert("R must be in (-5;5)");
-        return false;
-    } else {
-        return true;
-    }
+function displayError(errorMessage) {
+    let errorNode = document.createElement("div");
+    errorNode.className = "error-message";
+    errorNode.textContent = errorMessage;
+    let errorContainer = document.getElementById("error-container");
+    errorContainer.appendChild(errorNode);
 }

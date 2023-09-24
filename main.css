@@ -14,6 +14,9 @@ body {
 
 .main-table {
     text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 TH.variable::after {
@@ -50,6 +53,8 @@ div p {
     border: groove #e7d7d6;
     cursor: pointer;
     border-radius: 7px;
+    width: 50px;
+    height: 40px;
 }
 
 #cleaningbutton {
@@ -61,10 +66,25 @@ div p {
     border: groove #e7d7d6;
     cursor: pointer;
     border-radius: 7px;
+    width: 50px;
+    height: 40px;
 }
 
 #select {
     font-size: 100%;
 }
+
+
+#error-container {
+    background-color: #ffcccc;
+    border: 1px solid #ff0000;
+    color: #ff0000;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    display: none;
+    width: 50%;
+}
+
 
 
